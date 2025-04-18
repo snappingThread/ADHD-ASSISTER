@@ -4,39 +4,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ADHD Assistant App</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d4f7c9; /* Pastel lime green */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      border: 10px solid #a2e3a1; /* Darker green border around the page */
+    }
+
+    .container {
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+      border-top: 3px solid #81c784; /* Thin darker green border across the top */
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .features {
+      margin-top: 30px;
+      text-align: left;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to ADHD Assistant App</h1>
-  <form id="auth-form">
-    <input type="email" id="email" placeholder="Enter your email" required>
-    <input type="password" id="password" placeholder="Enter your password" required>
-    <button type="submit">Sign Up / Log In</button>
-  </form>
 
-  <script>
-    // Supabase initialization (this should be at the top)
-    const supabaseUrl = "https://enwbsnikswztqonxvbof.supabase.co";
-    const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVud2Jzbmlrc3d6dHFvbnh2Ym9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5OTEwODcsImV4cCI6MjA2MDU2NzA4N30.6nZQvAGpxAFEICHwhwg69f3Kn8BsGSzAXcxvUnTWH0k";
-    const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+  <div class="container">
+    <h1>Welcome to ADHD Assistant</h1>
+    
+    <form id="auth-form">
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <input type="password" id="password" placeholder="Enter your password" required>
+      <button type="submit">Sign Up / Log In</button>
+    </form>
 
-    // Handle form submission
-    document.getElementById("auth-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+    <p>Not registered? <a href="#">Sign Up here</a></p>
 
-      // Sign up or log in user
-      const { user, error } = await supabase.auth.signUp({ email, password });
+    <div class="features">
+      <h3>Features to Come:</h3>
+      <ul>
+        <li>Task Management</li>
+        <li>Mood Tracker</li>
+        <li>Daily Reminders</li>
+      </ul>
+    </div>
+  </div>
 
-      if (error) {
-        console.error("Error during signup:", error);
-        alert("Error: " + error.message);
-      } else {
-        console.log("User created successfully:", user);
-        alert("Success! Check your email to confirm your account.");
-      }
-    });
-  </script>
 </body>
 </html>
