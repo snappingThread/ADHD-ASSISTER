@@ -15,7 +15,7 @@
   </form>
 
   <script>
-    // Supabase initialization
+    // Supabase initialization (this should be at the top)
     const supabaseUrl = "https://enwbsnikswztqonxvbof.supabase.co";
     const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVud2Jzbmlrc3d6dHFvbnh2Ym9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5OTEwODcsImV4cCI6MjA2MDU2NzA4N30.6nZQvAGpxAFEICHwhwg69f3Kn8BsGSzAXcxvUnTWH0k";
     const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
@@ -30,11 +30,11 @@
       const { user, error } = await supabase.auth.signUp({ email, password });
 
       if (error) {
-        console.error("Error:", error.message);
-        alert(error.message);
+        console.error("Error during signup:", error);
+        alert("Error: " + error.message);
       } else {
-        console.log("User signed up:", user);
-        alert("Welcome! Check your email for confirmation.");
+        console.log("User created successfully:", user);
+        alert("Success! Check your email to confirm your account.");
       }
     });
   </script>
