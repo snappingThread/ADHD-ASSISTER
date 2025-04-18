@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ADHD Assistance App - Login</title>
+  <!-- Load Supabase SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <style>
-    /* Your existing styles here */
+    /* Your existing styles */
   </style>
 </head>
 <body>
   <div class="navbar">
     <div class="nav-links">
       <button onclick="location.href='index.html'">Home</button>
-      <!-- Add other navigation buttons as needed -->
     </div>
   </div>
 
@@ -40,34 +40,38 @@
   </div>
 
   <script>
-    const supabaseUrl = "https://enwbsnikswztqonxvbof.supabase.co";
-    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVud2Jzbmlrc3d6dHFvbnh2Ym9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5OTEwODcsImV4cCI6MjA2MDU2NzA4N30.6nZQvAGpxAFEICHwhwg69f3Kn8BsGSzAXcxvUnTWH0k";
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    document.addEventListener("DOMContentLoaded", () => {
+      const supabaseUrl = "https://enwbsnikswztqonxvbof.supabase.co";
+      const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVud2Jzbmlrc3d6dHFvbnh2Ym9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5OTEwODcsImV4cCI6MjA2MDU2NzA4N30.6nZQvAGpxAFEICHwhwg69f3Kn8BsGSzAXcxvUnTWH0k";
+      const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    document.getElementById("login-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("login-email").value;
-      const password = document.getElementById("login-password").value;
+      // Login functionality
+      document.getElementById("login-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("login-email").value;
+        const password = document.getElementById("login-password").value;
 
-      const { user, error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) {
-        alert("Login failed: " + error.message);
-      } else {
-        alert("Logged in successfully!");
-      }
-    });
+        const { user, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) {
+          alert("Login failed: " + error.message);
+        } else {
+          alert("Logged in successfully!");
+        }
+      });
 
-    document.getElementById("signup-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("signup-email").value;
-      const password = document.getElementById("signup-password").value;
+      // Signup functionality
+      document.getElementById("signup-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("signup-email").value;
+        const password = document.getElementById("signup-password").value;
 
-      const { user, error } = await supabase.auth.signUp({ email, password });
-      if (error) {
-        alert("Sign up failed: " + error.message);
-      } else {
-        alert("Account created successfully!");
-      }
+        const { user, error } = await supabase.auth.signUp({ email, password });
+        if (error) {
+          alert("Sign up failed: " + error.message);
+        } else {
+          alert("Account created successfully!");
+        }
+      });
     });
   </script>
 </body>
