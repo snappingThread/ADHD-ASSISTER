@@ -23,6 +23,10 @@
       background-color: #104611; /* Navigation bar background color */
       padding: 10px 0;
       text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
     }
 
     .navbar button {
@@ -52,6 +56,7 @@
       color: #0b3d0b;
       border: 4px solid #96d597;
       transform: translateY(-20px); /* Embossed look */
+      margin-top: 80px; /* To ensure it doesn't overlap the navbar */
     }
 
     .box h2 {
