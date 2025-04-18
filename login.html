@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #577b58; /* Same background color as homepage */
+      background-color: #577b58;
       color: #fff;
       display: flex;
       justify-content: center;
@@ -20,7 +20,7 @@
 
     .navbar {
       width: 100%;
-      background-color: #104611; /* Same navbar color */
+      background-color: #104611;
       padding: 10px 0;
       text-align: center;
       position: fixed;
@@ -45,7 +45,7 @@
     }
 
     .box {
-      background-color: #96d597; /* Box color */
+      background-color: #96d597;
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -55,8 +55,8 @@
       font-size: 18px;
       color: #0b3d0b;
       border: 4px solid #96d597;
-      transform: translateY(-20px); /* Embossed look */
-      margin-top: 80px; /* Ensures the box doesn't overlap the navbar */
+      transform: translateY(-20px);
+      margin-top: 80px;
     }
 
     .box h2 {
@@ -73,7 +73,7 @@
     }
 
     .box input.error {
-      border-color: red; /* Red border for error */
+      border-color: red;
     }
 
     .box button {
@@ -111,7 +111,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
-    // Replace these with your actual Supabase URL and anon key
+    // Initialize Supabase immediately after loading the library
     const supabaseUrl = 'https://kushqvmczbyfzoxcfdhv.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNjdmZmZiZC1hMTZhLTRmYjEtYmZmOC0wNjcwYzY3MzQ2YjciLCJyb2xlIjoiYW5vbiIsImlhdCI6MTY3MDY3MTk2NCwiZXhwIjoyOTI2MjQ3OTY0fQ.j94S2JeClLBGdcF1HxGPbiKUcncZnxdTx9vAw4VME2A';
     const supabase = supabase.createClient(supabaseUrl, supabaseKey);
