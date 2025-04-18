@@ -90,12 +90,6 @@
     .box button:hover {
       background-color: #45a049;
     }
-
-    @media (max-width: 600px) {
-      .container {
-        flex-direction: column;
-      }
-    }
   </style>
 </head>
 <body>
@@ -110,30 +104,53 @@
       <input type="email" id="signup-email" placeholder="Email" required>
       <input type="password" id="signup-password" placeholder="Password" required>
       <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+      <input type="text" id="signup-username" placeholder="Username" required>
       <button type="submit">Sign Up</button>
     </form>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
-    document.getElementById("signup-form").addEventListener("submit", (e) => {
+    // Replace these with your actual Supabase URL and anon key
+    const supabaseUrl = 'https://kushqvmczbyfzoxcfdhv.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNjdmZmZiZC1hMTZhLTRmYjEtYmZmOC0wNjcwYzY3MzQ2YjciLCJyb2xlIjoiYW5vbiIsImlhdCI6MTY3MDY3MTk2NCwiZXhwIjoyOTI2MjQ3OTY0fQ.j94S2JeClLBGdcF1HxGPbiKUcncZnxdTx9vAw4VME2A';
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    async function signUp(email, password, username) {
+      const { user, error } = await supabase.auth.signUp({ email, password });
+
+      if (error) {
+        console.error('Error signing up:', error);
+        alert('Error signing up: ' + error.message);
+        return;
+      }
+
+      const { data, error: profileError } = await supabase
+        .from('profiles')
+        .insert([{ user_id: user.id, username }]);
+
+      if (profileError) {
+        console.error('Error creating profile:', profileError);
+        alert('Error creating profile: ' + profileError.message);
+      } else {
+        alert('Account created successfully! Proceed to log in.');
+      }
+    }
+
+    document.getElementById("signup-form").addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const email = document.getElementById("signup-email").value;
       const password = document.getElementById("signup-password").value;
       const confirmPassword = document.getElementById("signup-confirm-password").value;
+      const username = document.getElementById("signup-username").value;
 
-      const confirmPasswordField = document.getElementById("signup-confirm-password");
-
-      // Check if passwords match
       if (password !== confirmPassword) {
-        confirmPasswordField.classList.add("error");
         alert("Passwords do not match!");
-      } else {
-        confirmPasswordField.classList.remove("error");
-
-        // Here you can add your code to handle the actual signup process with Supabase
-        alert("Account created successfully! Proceed to log in.");
+        return;
       }
+
+      await signUp(email, password, username);
     });
   </script>
 
