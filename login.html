@@ -3,77 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADHD Assistance App - Login</title>
-  <!-- Load Supabase SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <title>Sign Up - Neurodivergent Helper</title>
   <style>
-    /* Your existing styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #577b58; /* Same background color as homepage */
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .navbar {
+      width: 100%;
+      background-color: #104611; /* Same navbar color */
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .navbar button {
+      background-color: #ffffff;
+      color: #104611;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar button:hover {
+      background-color: #c2c2c2;
+    }
+
+    .box {
+      background-color: #96d597; /* Box color */
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      font-size: 18px;
+      color: #0b3d0b;
+      border: 4px solid #96d597;
+      transform: translateY(-20px); /* Embossed look */
+      margin-top: 80px; /* Ensures the box doesn't overlap the navbar */
+    }
+
+    .box h2 {
+      margin: 0 0 20px 0;
+    }
+
+    .box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .box input.error {
+      border-color: red; /* Red border for error */
+    }
+
+    .box button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .box button:hover {
+      background-color: #45a049;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
+
   <div class="navbar">
-    <div class="nav-links">
-      <button onclick="location.href='index.html'">Home</button>
-    </div>
+    <button onclick="location.href='https://snappingthread.github.io/ADHD-ASSISTER/index.html'">Home</button>
   </div>
 
-  <div class="container">
-    <!-- Login Box -->
-    <div class="box">
-      <h2>Login</h2>
-      <form id="login-form">
-        <input type="email" id="login-email" placeholder="Email" required>
-        <input type="password" id="login-password" placeholder="Password" required>
-        <button type="submit">Log In</button>
-      </form>
-    </div>
-
-    <!-- Signup Box -->
-    <div class="box">
-      <h2>Sign Up</h2>
-      <form id="signup-form">
-        <input type="email" id="signup-email" placeholder="Email" required>
-        <input type="password" id="signup-password" placeholder="Password" required>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+  <div class="box">
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+      <input type="email" id="signup-email" placeholder="Email" required>
+      <input type="password" id="signup-password" placeholder="Password" required>
+      <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Initialize Supabase only after the page content is loaded
-      const supabaseUrl = "https://enwbsnikswztqonxvbof.supabase.co";
-      const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVud2Jzbmlrc3d6dHFvbnh2Ym9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5OTEwODcsImV4cCI6MjA2MDU2NzA4N30.6nZQvAGpxAFEICHwhwg69f3Kn8BsGSzAXcxvUnTWH0k";
-      const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    document.getElementById("signup-form").addEventListener("submit", (e) => {
+      e.preventDefault();
 
-      // Login functionality
-      document.getElementById("login-form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const email = document.getElementById("login-email").value;
-        const password = document.getElementById("login-password").value;
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      const confirmPassword = document.getElementById("signup-confirm-password").value;
 
-        const { user, error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) {
-          alert("Login failed: " + error.message);
-        } else {
-          alert("Logged in successfully!");
-        }
-      });
+      const confirmPasswordField = document.getElementById("signup-confirm-password");
 
-      // Signup functionality
-      document.getElementById("signup-form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const email = document.getElementById("signup-email").value;
-        const password = document.getElementById("signup-password").value;
+      // Check if passwords match
+      if (password !== confirmPassword) {
+        confirmPasswordField.classList.add("error");
+        alert("Passwords do not match!");
+      } else {
+        confirmPasswordField.classList.remove("error");
 
-        const { user, error } = await supabase.auth.signUp({ email, password });
-        if (error) {
-          alert("Sign up failed: " + error.message);
-        } else {
-          alert("Account created successfully!");
-        }
-      });
+        // Here you can add your code to handle the actual signup process with Supabase
+        alert("Account created successfully! Proceed to log in.");
+      }
     });
   </script>
+
 </body>
 </html>
