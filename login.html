@@ -101,21 +101,22 @@
   <div class="box">
     <h2>Sign Up</h2>
     <form id="signup-form">
-      <input type="email" id="signup-email" placeholder="Email" required>
-      <input type="password" id="signup-password" placeholder="Password" required>
-      <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
-      <input type="text" id="signup-username" placeholder="Username" required>
-      <button type="submit">Sign Up</button>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+      <input type="text" id="username" placeholder="Username" required>
+      <button type="button" id="signup-button">Sign Up</button>
     </form>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
-    // Initialize Supabase immediately after loading the library
+    // Initialize Supabase
     const supabaseUrl = 'https://kushqvmczbyfzoxcfdhv.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNjdmZmZiZC1hMTZhLTRmYjEtYmZmOC0wNjcwYzY3MzQ2YjciLCJyb2xlIjoiYW5vbiIsImlhdCI6MTY3MDY3MTk2NCwiZXhwIjoyOTI2MjQ3OTY0fQ.j94S2JeClLBGdcF1HxGPbiKUcncZnxdTx9vAw4VME2A';
     const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
+    // Sign Up Function
     async function signUp(email, password, username) {
       const { user, error } = await supabase.auth.signUp({ email, password });
 
@@ -137,16 +138,14 @@
       }
     }
 
-    document.getElementById("signup-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const email = document.getElementById("signup-email").value;
-      const password = document.getElementById("signup-password").value;
-      const confirmPassword = document.getElementById("signup-confirm-password").value;
-      const username = document.getElementById("signup-username").value;
+    document.getElementById('signup-button').addEventListener('click', async () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      const username = document.getElementById('username').value;
 
       if (password !== confirmPassword) {
-        alert("Passwords do not match!");
+        alert('Passwords do not match!');
         return;
       }
 
