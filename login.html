@@ -72,10 +72,6 @@
       font-size: 16px;
     }
 
-    .box input.error {
-      border-color: red;
-    }
-
     .box button {
       background-color: #4CAF50;
       color: white;
@@ -91,24 +87,7 @@
       background-color: #45a049;
     }
   </style>
-</head>
-<body>
-
-  <div class="navbar">
-    <button onclick="location.href='https://snappingthread.github.io/ADHD-ASSISTER/index.html'">Home</button>
-  </div>
-
-  <div class="box">
-    <h2>Sign Up</h2>
-    <form id="signup-form">
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <input type="password" id="confirm-password" placeholder="Confirm Password" required>
-      <input type="text" id="username" placeholder="Username" required>
-      <button type="button" id="signup-button">Sign Up</button>
-    </form>
-  </div>
-
+  <!-- Include Supabase JS library -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
     // Initialize Supabase
@@ -134,24 +113,37 @@
         console.error('Error creating profile:', profileError);
         alert('Error creating profile: ' + profileError.message);
       } else {
-        alert('Account created successfully! Proceed to log in.');
+        alert('Account created successfully!');
       }
     }
 
-    document.getElementById('signup-button').addEventListener('click', async () => {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirm-password').value;
-      const username = document.getElementById('username').value;
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('signup-button').addEventListener('click', () => {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const username = document.getElementById('username').value;
 
-      if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-      }
+        if (!email || !password || !username) {
+          alert('Please fill in all fields.');
+          return;
+        }
 
-      await signUp(email, password, username);
+        signUp(email, password, username);
+      });
     });
   </script>
+</head>
+<body>
+  <div class="navbar">
+    <button onclick="location.href='https://snappingthread.github.io/ADHD-ASSISTER/index.html'">Home</button>
+  </div>
 
+  <div class="box">
+    <h2>Sign Up</h2>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <input type="text" id="username" placeholder="Username" required>
+    <button id="signup-button">Sign Up</button>
+  </div>
 </body>
 </html>
