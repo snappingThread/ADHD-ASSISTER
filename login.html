@@ -91,9 +91,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script>
     // Initialize Supabase
-    const supabaseUrl = 'https://enwbsnikswztqonxvbof.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVud2Jzbmlrc3d6dHFvbnh2Ym9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5OTEwODcsImV4cCI6MjA2MDU2NzA4N30.6nZQvAGpxAFEICHwhwg69f3Kn8BsGSzAXcxvUnTWH0k'; // Use your anon key here
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    const supabaseUrl = 'https://kushqvmczbyfzoxcfdhv.supabase.co';
+    const supabaseKey = 'YOUR_ANON_KEY'; // Use your anon key here
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey); // Correctly create the client
 
     // Sign Up Function
     async function signUp(email, password, username) {
@@ -142,8 +142,4 @@
     <h2>Sign Up</h2>
     <input type="email" id="email" placeholder="Email" required>
     <input type="password" id="password" placeholder="Password" required>
-    <input type="text" id="username" placeholder="Username" required>
-    <button id="signup-button">Sign Up</button>
-  </div>
-</body>
-</html>
+    <input type="text" id="username" placeholder="Username
