@@ -3,35 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADHD Assistance App - Homepage</title>
+  <title>Neurodivergent Helper</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-color: #0b3d0b; /* Dark forest green background */
+      background-color: #577b58; /* Main background color */
       color: #fff;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
+      flex-direction: column;
     }
 
     .navbar {
-      background-color: #d3d3d3; /* Pastel grey */
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .navbar .nav-links {
-      display: flex;
-      gap: 15px;
+      width: 100%;
+      background-color: #104611; /* Navigation bar background color */
+      padding: 10px 0;
+      text-align: center;
     }
 
     .navbar button {
-      background-color: #ffffff; /* White buttons */
-      color: #0b3d0b; /* Matching green for text */
+      background-color: #ffffff;
+      color: #104611;
       border: none;
       padding: 8px 15px;
       border-radius: 5px;
@@ -41,48 +37,55 @@
     }
 
     .navbar button:hover {
-      background-color: #c2c2c2; /* Slightly darker grey on hover */
+      background-color: #c2c2c2;
     }
 
-    .content {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .content h1 {
-      font-size: 36px;
+    .box {
+      background-color: #96d597; /* Box color */
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
       text-align: center;
+      max-width: 500px;
+      width: 100%;
+      font-size: 18px;
+      color: #0b3d0b;
+      border: 4px solid #96d597;
+      transform: translateY(-20px); /* Embossed look */
     }
 
-    @media (max-width: 600px) {
-      .navbar button {
-        font-size: 14px;
-        padding: 6px 10px;
-      }
+    .box h2 {
+      margin: 0 0 20px 0;
+    }
 
-      .content h1 {
-        font-size: 28px;
-      }
+    .signup-btn {
+      background-color: #d7f7d7; /* Sign up button color */
+      padding: 10px 20px;
+      border-radius: 15px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    .signup-btn:hover {
+      background-color: #c1e3c1;
     }
   </style>
 </head>
 <body>
 
   <div class="navbar">
-    <div class="nav-links">
-      <button onclick="location.href='page1.html'">Page 1</button>
-      <button onclick="location.href='page2.html'">Page 2</button>
-      <button onclick="location.href='page3.html'">Page 3</button>
-      <!-- Add more buttons as needed -->
-    </div>
-   <button onclick="location.href='/ADHD-ASSISTER/login.html'">Login/Signup</button>
+    <button>Home</button> <!-- You can add other navbar items if needed -->
   </div>
 
-  <div class="content">
-    <h1>Welcome to the ADHD Assistance App!
-    please log in or sign up to get started!</h1>
+  <div class="box">
+    <h2>Welcome to the Neurodivergent Helper Site!</h2>
+    <p>Proceed to the signup area to begin!</p>
+    <a href="https://snappingthread.github.io/ADHD-ASSISTER/login.html">
+      <button class="signup-btn">Sign Up</button>
+    </a>
   </div>
 
 </body>
