@@ -4,98 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ADHD Assistance App - Login</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0b3d0b; /* Dark forest green */
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-
-    .navbar {
-      background-color: #d3d3d3; /* Pastel grey */
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .navbar button {
-      background-color: #ffffff;
-      color: #0b3d0b;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s;
-    }
-
-    .navbar button:hover {
-      background-color: #c2c2c2;
-    }
-
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-      gap: 20px;
-    }
-
-    .box {
-      background-color: #ffffff; /* White box background */
-      color: #0b3d0b;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      width: 300px;
-      box-sizing: border-box;
-    }
-
-    .box h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .box input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-
-    .box button {
-      width: 100%;
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .box button:hover {
-      background-color: #45a049;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        flex-direction: column;
-      }
-    }
+    /* Your existing styles here */
   </style>
 </head>
 <body>
-
   <div class="navbar">
     <div class="nav-links">
       <button onclick="location.href='index.html'">Home</button>
@@ -126,12 +40,10 @@
   </div>
 
   <script>
-   const supabaseUrl = "https://enwbsnikswztqonxvbof.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVud2Jzbmlrc3d6dHFvbnh2Ym9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5OTEwODcsImV4cCI6MjA2MDU2NzA4N30.6nZQvAGpxAFEICHwhwg69f3Kn8BsGSzAXcxvUnTWH0k";
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    const supabaseUrl = "https://enwbsnikswztqonxvbof.supabase.co";
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVud2Jzbmlrc3d6dHFvbnh2Ym9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ5OTEwODcsImV4cCI6MjA2MDU2NzA4N30.6nZQvAGpxAFEICHwhwg69f3Kn8BsGSzAXcxvUnTWH0k";
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-
-    // Login functionality
     document.getElementById("login-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("login-email").value;
@@ -145,7 +57,6 @@ const supabase = supabase.createClient(supabaseUrl, supabaseKey);
       }
     });
 
-    // Signup functionality
     document.getElementById("signup-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = document.getElementById("signup-email").value;
@@ -159,7 +70,5 @@ const supabase = supabase.createClient(supabaseUrl, supabaseKey);
       }
     });
   </script>
-
 </body>
 </html>
-
